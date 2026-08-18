@@ -1,17 +1,15 @@
-# A's Towing Fresno website
+# A's Towing Fresno — Heavy-Duty Website
 
-Static multi-page website ready for GitHub/Vercel/Netlify.
+Heavy-duty-focused production build for A's Towing in Fresno, California.
 
-## Included
-- Shared responsive CSS and JavaScript
-- Mobile menu and persistent mobile call button
-- Custom wrench-shaped cursor on desktop
-- Yellow/steel branded scrollbar
-- Leaflet/OpenStreetMap interactive service-area map
-- SEO meta descriptions, LocalBusiness schema, robots.txt and sitemap.xml
-- Pages matching the business' existing service structure
+## Included focus
+- Heavy-duty towing
+- Semi-truck towing
+- Commercial vehicles
+- Medium and heavy-duty work trucks
+- RV and 5th-wheel towing
+- Container transport
+- Heavy recovery and emergency service
+- Gallery, testimonials, FAQ and contact
 
-## Before launch
-1. Connect the contact form to the business' preferred form/email provider.
-2. Replace canonical URLs if the production domain changes.
-3. Add any additional original gallery photos desired.
+The previous light-duty, roadside-assistance, private-property and standalone local/long-distance pages were intentionally removed from this deployment version.
