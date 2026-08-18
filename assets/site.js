@@ -17,7 +17,7 @@ function header(){
   return `<header class="site-header"><div class="container header-inner">
     <a class="brand" href="index.html"><img src="assets/images/logo.webp" alt="A's Towing Fresno logo"><span class="brand-copy"><strong>A's Towing</strong><span>Fresno, California</span></span></a>
     <nav class="nav" id="nav"><a href="index.html">Home</a><div class="nav-dropdown"><button type="button" id="services-toggle">Towing Services ▾</button><div class="dropdown-menu">${serviceLinks}</div></div><a href="gallery.html">Gallery</a><a href="testimonials.html">Testimonials</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav>
-    <a class="header-call" href="tel:+15595753951">☎ (559) 575-3951</a><button class="menu-toggle" id="menu-toggle" aria-label="Open menu">☰</button>
+    <a class="header-call" href="tel:+15595753951">☎ (559) 575-3951</a><button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-controls="nav" aria-expanded="false">☰</button>
   </div></header>`;
 }
 function footer(){return `<footer class="footer"><div class="container"><div class="footer-grid">
@@ -30,7 +30,13 @@ function footer(){return `<footer class="footer"><div class="container"><div cla
 function initChrome(){
   document.body.insertAdjacentHTML('afterbegin',header());document.body.insertAdjacentHTML('beforeend',footer());
   const toggle=document.getElementById('menu-toggle'),nav=document.getElementById('nav'),services=document.querySelector('.nav-dropdown'),st=document.getElementById('services-toggle');
-  toggle?.addEventListener('click',()=>nav.classList.toggle('open'));st?.addEventListener('click',e=>{if(innerWidth<=980){e.preventDefault();services.classList.toggle('open')}});
+  toggle?.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open))});st?.addEventListener('click',e=>{if(innerWidth<=980){e.preventDefault();const open=services.classList.toggle('open');st.setAttribute('aria-expanded',String(open))}});
+  // Highlight the current top-level section in the header. Service detail pages keep Towing Services highlighted.
+  const current=(location.pathname.split('/').pop()||'index.html').toLowerCase();
+  const servicePages=new Set(SERVICES.map(s=>s[1].toLowerCase()));
+  document.querySelectorAll('.nav a').forEach(a=>{const href=(a.getAttribute('href')||'').toLowerCase();if(href===current){a.classList.add('active');a.setAttribute('aria-current','page')}});
+  if(servicePages.has(current)||current==='services.html'){st?.classList.add('active');if(current==='services.html')st?.setAttribute('aria-current','page')}
+
   const cursor=document.createElement('div');cursor.id='tow-cursor';cursor.innerHTML=`<svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#f5b400" stroke="#111" stroke-width="1.3" d="M21.8 3.3c1.3.2 2.1 1.6 1.5 2.7l-2.4 4.4 2.7 2.8 4.5-2.3c1.2-.6 2.5.2 2.7 1.5.5 3.4-1.7 6.7-5 7.6-1.5.4-3 .3-4.3-.2L10.7 30.6a3 3 0 0 1-4.2 0l-5.1-5.1a3 3 0 0 1 0-4.2l10.8-10.8a8.3 8.3 0 0 1-.1-4.4c.9-3.3 4.2-5.5 7.6-5l.1.1 2 2.1Zm-14 20.4a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4Z"/></svg>`;document.body.appendChild(cursor);
   document.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'});document.querySelectorAll('a,button,.service-card,.map-chip,summary').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-active'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-active'))});
   const yellowTargets=document.querySelectorAll('.band,.band-item,.cta,.btn-primary,.header-call,.mobile-call');
@@ -52,3 +58,41 @@ function initMap(){
   coreBtn?.addEventListener('click',()=>{map.fitBounds(core.getBounds().pad(.3));active(coreBtn)});longBtn?.addEventListener('click',()=>{map.fitBounds(long.getBounds().pad(.05));active(longBtn)});
 }
 document.addEventListener('DOMContentLoaded',()=>{initChrome();initMap()});
+
+function initGallery(){
+  const grid=document.getElementById('gallery-masonry');
+  if(!grid) return;
+  const filter=document.getElementById('gallery-filter');
+  const count=document.getElementById('gallery-count');
+  const more=document.getElementById('gallery-more');
+  const items=[...grid.querySelectorAll('.gallery-item')];
+  const lightbox=document.getElementById('gallery-lightbox');
+  const lbImg=document.getElementById('lightbox-image');
+  const lbCap=document.getElementById('lightbox-caption');
+  const lbCount=document.getElementById('lightbox-counter');
+  let expanded=false, visibleItems=[], current=0;
+  function apply(){
+    const cat=filter?.value||'all';
+    visibleItems=items.filter(x=>cat==='all'||x.dataset.category===cat);
+    items.forEach(x=>{x.classList.toggle('is-hidden',!visibleItems.includes(x));x.classList.remove('is-collapsed')});
+    if(!expanded&&visibleItems.length>12) visibleItems.slice(12).forEach(x=>x.classList.add('is-collapsed'));
+    if(count) count.textContent=`${visibleItems.length} photo${visibleItems.length===1?'':'s'}`;
+    if(more){more.hidden=visibleItems.length<=12;more.textContent=expanded?'Show fewer photos':'Show more photos'}
+  }
+  filter?.addEventListener('change',()=>{expanded=false;apply()});
+  more?.addEventListener('click',()=>{expanded=!expanded;apply();if(!expanded) grid.scrollIntoView({behavior:'smooth',block:'start'})});
+  function show(i){
+    if(!visibleItems.length) return; current=(i+visibleItems.length)%visibleItems.length;
+    const img=visibleItems[current].querySelector('img'); lbImg.src=img.src; lbImg.alt=img.alt; lbCap.textContent=img.alt.replace(" by A's Towing in Fresno",''); lbCount.textContent=`${current+1} / ${visibleItems.length}`;
+  }
+  function open(item){expanded=true;apply();current=visibleItems.indexOf(item);show(current);lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-open')}
+  function close(){lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');document.body.classList.remove('lightbox-open')}
+  items.forEach(item=>item.querySelector('.gallery-open')?.addEventListener('click',()=>open(item)));
+  lightbox?.querySelector('.lightbox-close')?.addEventListener('click',close);
+  lightbox?.querySelector('.lightbox-prev')?.addEventListener('click',()=>show(current-1));
+  lightbox?.querySelector('.lightbox-next')?.addEventListener('click',()=>show(current+1));
+  lightbox?.addEventListener('click',e=>{if(e.target===lightbox) close()});
+  document.addEventListener('keydown',e=>{if(!lightbox?.classList.contains('open'))return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(current-1);if(e.key==='ArrowRight')show(current+1)});
+  apply();
+}
+document.addEventListener('DOMContentLoaded',initGallery);
