@@ -309,3 +309,24 @@ body.cursor-on-yellow #tow-cursor path{fill:#fff!important;stroke:#fff!important
 @media(max-width:900px){
   .nav{background:#fff!important;border-top:1px solid #eee!important}.nav>a,.nav-dropdown>button{color:#171717!important}.dropdown-menu{background:#f8f8f8!important}
 }
+
+/* Transparent logo refinement */
+.brand img{
+  width:112px;
+  height:72px;
+  object-fit:contain;
+  background:transparent;
+  box-shadow:none;
+}
+.footer-brand img{
+  width:128px;
+  height:auto;
+  object-fit:contain;
+  background:transparent;
+}
+@media(max-width:980px){
+  .brand img{width:88px;height:60px}
+}
+@media(max-width:640px){
+  .brand img{width:74px;height:54px}
+}
