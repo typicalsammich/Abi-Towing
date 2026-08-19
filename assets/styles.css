@@ -220,3 +220,92 @@ body.lightbox-open{overflow:hidden}
 *{scrollbar-color:var(--brand-red) #121416}
 body.cursor-on-yellow #tow-cursor path{fill:#fff!important;stroke:#111!important}
 @media(max-width:980px){.brand img{width:76px;height:58px}.nav>a.active,.nav-dropdown>button.active{background:rgba(215,25,32,.1)}}
+
+/* =========================================================
+   RED + WHITE CLIENT THEME — 2026-08-19
+   White is the primary canvas; red is the primary brand color.
+   Charcoal is reserved for readable text / photo overlays only.
+   ========================================================= */
+:root{
+  --ink:#ffffff;
+  --ink-2:#f6f6f6;
+  --steel:#d9d9d9;
+  --steel-2:#777;
+  --paper:#ffffff;
+  --white:#ffffff;
+  --yellow:#d71920;
+  --yellow-2:#b81017;
+  --line:rgba(215,25,32,.16);
+  --shadow:0 18px 50px rgba(106,0,4,.12);
+}
+html{background:#fff}
+body{color:#171717;background:#fff}
+p{color:#535353}.muted{color:#777}
+::-webkit-scrollbar-track{background:#fff}
+::-webkit-scrollbar-thumb{background:linear-gradient(#d71920,#a80f15);border:3px solid #fff}
+*{scrollbar-color:#d71920 #fff}
+body.cursor-on-yellow #tow-cursor path{fill:#fff!important;stroke:#fff!important}
+.site-header{background:rgba(255,255,255,.96);border-bottom:3px solid #d71920;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.brand-copy strong{color:#171717}.brand-copy span{color:#d71920}
+.nav>a,.nav-dropdown>button{color:#1b1b1b}.nav>a:hover,.nav-dropdown>button:hover{color:#d71920}
+.nav>a.active,.nav-dropdown>button.active{color:#d71920!important}
+.dropdown-menu{background:#fff;border:1px solid #e3e3e3;box-shadow:0 20px 50px rgba(0,0,0,.14)}
+.dropdown-menu a{color:#272727}.dropdown-menu a:hover,.dropdown-menu a.active{color:#fff;background:#d71920;border-left-color:#8f0e13}
+.header-call{background:#d71920;color:#fff;box-shadow:0 8px 20px rgba(215,25,32,.2)}
+.menu-toggle{color:#d71920}
+
+/* Home hero: still dramatic, but explicitly white/red instead of black/red */
+.hero{background:#fff;color:#151515}
+.hero:before{background-image:linear-gradient(90deg,rgba(255,255,255,.98) 0%,rgba(255,255,255,.92) 38%,rgba(255,255,255,.34) 72%),linear-gradient(0deg,#fff 0%,transparent 35%),var(--hero-image,url('images/truck-wrecker.png'))}
+.hero h1,.page-hero h1{color:#151515;text-shadow:0 2px 10px rgba(255,255,255,.95)}
+.hero .lead,.page-hero p{color:#3f3f3f}
+.hero-badges{border-top-color:rgba(215,25,32,.2)}.badge span{color:#555}.badge strong{color:#d71920}
+.btn-primary{background:#d71920;color:#fff}.btn-primary:hover{background:#b81017;color:#fff}
+.btn-outline{border-color:#d71920;color:#d71920;background:#fff}.btn-outline:hover{border-color:#b81017;background:#d71920;color:#fff}
+.band,.band-item{background:#d71920;color:#fff}.band-inner{background:rgba(255,255,255,.25)}
+
+/* Main surfaces */
+.section-dark,.section-alt,.section-light{background:#fff;color:#171717}
+.section-alt{background:#f7f7f7}
+.section-light p,.section-dark p,.section-alt p{color:#555}
+.section-head h2,.section-head h3,.section-light h2,.section-dark h2,.section-alt h2{color:#171717}
+.eyebrow,.section-light .eyebrow{color:#d71920}
+.service-card{border:1px solid #e0e0e0;background:#fff;box-shadow:0 10px 28px rgba(0,0,0,.06)}
+.service-card-media:after{background:linear-gradient(90deg,transparent 62%,rgba(255,255,255,.74))}
+.service-number{background:#d71920;border-left-color:#8d0c11;color:#fff}
+.service-kicker{color:#d71920}.service-card h3{color:#171717}.service-card p{color:#5c5c5c}.service-link{color:#171717}.service-link b{color:#d71920}
+.service-card:hover{border-color:#d71920;box-shadow:0 18px 38px rgba(215,25,32,.12)}
+.split-content{background:#f7f7f7;color:#171717}.split-content h2,.split-content h3{color:#171717}.check-item{color:#333}.check-item:before{background:#d71920;color:#fff}
+.map-wrap{border-color:#ddd;background:#fff}.map-panel{background:#fff}.map-panel h2,.map-panel h3{color:#171717}.map-chip{background:#fff;color:#222;border-color:#ddd}.map-chip:hover,.map-chip.active{border-color:#d71920;color:#fff;background:#d71920}.map-note{color:#777}
+.review{background:#fff;border-color:#ddd;box-shadow:0 8px 24px rgba(0,0,0,.05)}.review blockquote{color:#444}.review cite{color:#171717}.stars{color:#d71920}
+.cta{background:#d71920;color:#fff}.cta h2,.cta p{color:#fff}.cta .btn{background:#fff;color:#d71920}
+
+/* Individual service page heroes */
+.page-hero.service-hero{background:#fff;color:#171717}
+.page-hero.service-hero:before{background:radial-gradient(circle at 78% 32%,rgba(215,25,32,.08),transparent 28%),linear-gradient(90deg,#fff 0%,#f7f7f7 100%)}
+.page-hero.service-hero:after{background:linear-gradient(transparent,#fff)}
+.service-hero-media{border-color:#d9d9d9;background:#f3f3f3;box-shadow:0 24px 55px rgba(0,0,0,.14)}
+.service-hero-media:before{background:#d71920}.service-hero-media .photo-tag{background:#d71920;border-left-color:#8c0d12;color:#fff}
+.svc-feature-section,.light-duty-details{background:#fff;color:#171717}
+.svc-intro h2,.ld-intro h2,.ld-service-copy h2{color:#171717}.svc-intro p,.ld-intro p,.ld-service-copy p{color:#555}
+.svc-card,.ld-feature{background:#fff;border-color:#ddd;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+.svc-card:hover,.ld-feature:hover{background:#fff;border-color:#d71920}
+.svc-card h3,.ld-feature h3{color:#171717}.svc-card p,.ld-feature p{color:#5b5b5b}.svc-num,.ld-tag{color:#d71920}.ld-number{color:#ededed}
+.ld-icon{background:#fff;border-color:#ddd}.ld-icon svg{stroke:#d71920}
+.svc-service-band,.ld-service-band{background:#f7f7f7;border-color:#ddd;border-left-color:#d71920;box-shadow:0 12px 30px rgba(0,0,0,.05)}
+.svc-service-band h3{color:#171717}.svc-service-band p{color:#555}.svc-stats span{color:#444}.svc-stats strong{color:#d71920}
+.ld-service-facts>div{background:#fff;border-color:#ddd}.ld-service-facts strong{color:#d71920}.ld-service-facts span{color:#444}
+
+/* Gallery + testimonials + forms */
+.gallery-grid figure{border-color:#ddd;background:#fff}
+.gallery-filter,.gallery-controls select,select,input,textarea{background:#fff!important;color:#171717!important;border-color:#ccc!important}
+.contact-card,.faq-item,.testimonial-card,.reviews-shell,.gallery-shell{background:#fff!important;color:#171717!important;border-color:#ddd!important}
+.faq-item p,.testimonial-card p{color:#555!important}
+
+/* Footer is a strong red brand block rather than black */
+.footer{background:#d71920;border-top:0;color:#fff}.footer h4{color:#fff}.footer a,.footer p{color:#fff}.footer a:hover{color:#fff;text-decoration:underline}.footer-social-label{color:#fff}.social-icon{border-color:rgba(255,255,255,.65);color:#d71920!important;background:#fff}.social-icon:hover{border-color:#fff;background:#fff;color:#a60c12!important}.footer-bottom{border-top-color:rgba(255,255,255,.35);color:rgba(255,255,255,.86)}
+.mobile-call{background:#d71920!important;color:#fff!important;border-color:#fff!important}
+
+@media(max-width:900px){
+  .nav{background:#fff!important;border-top:1px solid #eee!important}.nav>a,.nav-dropdown>button{color:#171717!important}.dropdown-menu{background:#f8f8f8!important}
+}
