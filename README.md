@@ -1,6 +1,6 @@
-# HeavyDuty Towing Fresno — Heavy-Duty Website
+# A's Towing Fresno — Heavy-Duty Website
 
-Heavy-duty-focused production build for HeavyDuty Towing in Fresno, California.
+Heavy-duty-focused production build for A's Towing in Fresno, California.
 
 ## Included focus
 - Heavy-duty towing

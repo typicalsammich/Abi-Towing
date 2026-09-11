@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://heavydutytowing.com/sitemap.xml
+Sitemap: https://www.astowingfresno.com/sitemap.xml

@@ -11,17 +11,17 @@ const SERVICES = [
 function header(){
   const serviceLinks = SERVICES.map(s=>`<a href="${s[1]}">${s[0]}</a>`).join('');
   return `<header class="site-header"><div class="container header-inner">
-    <a class="brand text-brand" href="index.html" aria-label="HeavyDuty Towing home"><span class="heavy-logo"><b>HEAVYDUTY</b><em>TOWING</em></span><span class="brand-copy"><strong>HeavyDuty Towing</strong><span>Fresno, California</span></span></a>
+    <a class="brand" href="index.html"><img src="assets/images/as-heavy-duty-towing-client-logo.jpg" alt="A's Heavy Duty Towing Fresno logo"><span class="brand-copy"><strong>A's Heavy Duty Towing</strong><span>Fresno, California</span></span></a>
     <nav class="nav" id="nav"><a href="index.html">Home</a><div class="nav-dropdown"><button type="button" id="services-toggle">Towing Services ▾</button><div class="dropdown-menu">${serviceLinks}</div></div><a href="gallery.html">Gallery</a><a href="testimonials.html">Testimonials</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav>
     <a class="header-call" href="tel:+15595753951">☎ (559) 575-3951</a><button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-controls="nav" aria-expanded="false">☰</button>
   </div></header>`;
 }
 function footer(){return `<footer class="footer"><div class="container"><div class="footer-grid">
-  <div class="footer-brand"><a class="footer-text-logo" href="index.html" aria-label="HeavyDuty Towing home"><span class="heavy-logo footer-heavy-logo"><b>HEAVYDUTY</b><em>TOWING</em></span></a><p>Heavy-duty towing in Fresno and Clovis for semi trucks, commercial vehicles, RVs, buses, heavy equipment, containers and large-vehicle recovery. HeavyDuty Towing is built for heavy-duty towing jobs that standard tow trucks cannot handle.</p></div>
+  <div class="footer-brand"><img src="assets/images/as-heavy-duty-towing-client-logo.jpg" alt="A's Heavy Duty Towing"><p>Heavy-duty towing in Fresno and Clovis for semi trucks, commercial vehicles, RVs, buses, heavy equipment, containers and large-vehicle recovery. A's Heavy Duty Towing is built for heavy-duty towing jobs that standard tow trucks cannot handle.</p><div class="footer-social"><span class="footer-social-label">Follow us:</span><div class="footer-social-links"><a class="social-icon" href="https://www.facebook.com/p/As-towing-100023152166958/" target="_blank" rel="noopener noreferrer" aria-label="A's Towing on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v9h4v-9h3.2l.8-4H13V9c0-.7.3-1 1-1Z"/></svg></a><a class="social-icon" href="https://www.instagram.com/abi_559_towing/" target="_blank" rel="noopener noreferrer" aria-label="A's Towing on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a><a class="social-icon social-yelp" href="https://www.yelp.com/search?find_desc=A%27s+Towing&find_loc=3709+E+Pitt+Ave%2C+Fresno%2C+CA+93725" target="_blank" rel="noopener noreferrer" aria-label="A's Towing on Yelp"><span>Y</span></a><a class="social-icon social-google" href="https://www.google.com/maps/search/?api=1&query=A%27s+Towing%2C+3709+E+Pitt+Ave%2C+Fresno%2C+CA+93725" target="_blank" rel="noopener noreferrer" aria-label="A's Towing on Google"><span>G</span></a></div></div></div>
   <div><h4>Heavy Duty Services</h4><a href="heavy-duty-towing.html">Heavy Duty</a><a href="semi-truck-towing.html">Semi Trucks</a><a href="commercial-vehicles.html">Commercial Vehicles</a><a href="5th-wheel-towing.html">RVs &amp; 5th Wheels</a><a href="container-transport.html">Container Transport</a></div>
   <div><h4>Explore</h4><a href="gallery.html">Gallery</a><a href="testimonials.html">Testimonials</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></div>
   <div><h4>Contact</h4><a href="tel:+15595753951">(559) 575-3951</a><p>3709 East Pitt Avenue<br>Fresno, CA 93725</p><p>Se habla español.</p></div>
-</div><div class="footer-bottom"><span>© 2026 HeavyDuty Towing. All rights reserved.</span><span>Fresno • Clovis • Long-distance service up to 500 miles</span></div></div></footer><a class="mobile-call" href="tel:+15595753951">Call HeavyDuty Towing • (559) 575-3951</a>`}
+</div><div class="footer-bottom"><span>© 2026 A's Heavy Duty Towing. All rights reserved.</span><span>Fresno • Clovis • Long-distance service up to 500 miles</span></div></div></footer><a class="mobile-call" href="tel:+15595753951">Call HeavyDuty Towing</a>`}
 
 function initChrome(){
   document.body.insertAdjacentHTML('afterbegin',header());document.body.insertAdjacentHTML('beforeend',footer());
@@ -38,46 +38,8 @@ function initChrome(){
   const yellowTargets=document.querySelectorAll('.band,.band-item,.cta,.btn-primary,.header-call,.mobile-call');
   yellowTargets.forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-on-yellow'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-on-yellow'))});
   document.querySelectorAll('.dropdown-menu a').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-on-yellow'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-on-yellow'))});
-
-  // Mobile sticky call button:
-  // - stays hidden at the top so it never overlaps the hero's own call button
-  // - appears once the user has moved past the first hero section
-  // - inverts to white/red while it overlaps a red section/footer
-  const mobileCall=document.querySelector('.mobile-call');
-  const firstSection=document.querySelector('.hero,.page-hero');
-  const redSections=[...document.querySelectorAll('.footer,.cta,.band,.review-cta')];
-
-  function updateMobileCall(){
-    if(!mobileCall) return;
-    if(window.innerWidth>980){
-      mobileCall.classList.remove('is-visible','on-red');
-      return;
-    }
-
-    const firstBottom=firstSection ? firstSection.getBoundingClientRect().bottom : 260;
-    const revealPoint=Math.min(190,window.innerHeight*.20);
-    const shouldShow=firstBottom<=revealPoint || window.scrollY>320;
-    mobileCall.classList.toggle('is-visible',shouldShow);
-
-    if(!shouldShow){
-      mobileCall.classList.remove('on-red');
-      return;
-    }
-
-    const callRect=mobileCall.getBoundingClientRect();
-    const callY=callRect.top + callRect.height/2;
-    const overRed=redSections.some(sec=>{
-      const r=sec.getBoundingClientRect();
-      return callY>=r.top && callY<=r.bottom && r.bottom>0 && r.top<window.innerHeight;
-    });
-    mobileCall.classList.toggle('on-red',overRed);
-  }
-
-  window.addEventListener('scroll',updateMobileCall,{passive:true});
-  window.addEventListener('resize',updateMobileCall);
-  updateMobileCall();
 }
-function serviceCards(limit){return SERVICES.slice(0,limit||SERVICES.length).map((s,i)=>`<a class="service-card" href="${s[1]}"><div class="service-card-media"><img src="${s[3]}" alt="${s[0]} by HeavyDuty Towing"><span class="service-number">${String(i+1).padStart(2,'0')}</span></div><div class="service-card-content"><span class="service-kicker">Heavy-Duty Towing Service</span><h3>${s[0]}</h3><p>${s[2]}</p><span class="service-link">View service <b>↗</b></span></div></a>`).join('')}
+function serviceCards(limit){return SERVICES.slice(0,limit||SERVICES.length).map((s,i)=>`<a class="service-card" href="${s[1]}"><div class="service-card-media"><img src="${s[3]}" alt="${s[0]} by A's Heavy Duty Towing"><span class="service-number">${String(i+1).padStart(2,'0')}</span></div><div class="service-card-content"><span class="service-kicker">Heavy-Duty Towing Service</span><h3>${s[0]}</h3><p>${s[2]}</p><span class="service-link">View service <b>↗</b></span></div></a>`).join('')}
 function initMap(){
   if(!document.getElementById('service-map')||typeof L==='undefined') return;
   const map=L.map('service-map',{scrollWheelZoom:false}).setView([36.75,-119.77],10);
@@ -86,7 +48,7 @@ function initMap(){
   const fresno=L.circle([36.7378,-119.7871],{radius:19000,color:'#d71920',weight:3,fillColor:'#d71920',fillOpacity:.12}).bindPopup('<b>Fresno Core Service Area</b>');
   const clovis=L.circle([36.8252,-119.7029],{radius:10000,color:'#d71920',weight:3,fillColor:'#d71920',fillOpacity:.12}).bindPopup('<b>Clovis Core Service Area</b>');core.addLayer(fresno).addLayer(clovis);
   const long=L.circle([36.7378,-119.7871],{radius:804672,color:'#555b60',weight:2,dashArray:'8 8',fillOpacity:0}).addTo(map).bindPopup('<b>Long-distance capability:</b> up to 500 miles from Fresno, subject to availability.');
-  L.marker([36.7378,-119.7871]).addTo(map).bindPopup("HeavyDuty Towing • Fresno, CA");map.fitBounds(core.getBounds().pad(.3));
+  L.marker([36.7378,-119.7871]).addTo(map).bindPopup("A's Heavy Duty Towing • Fresno, CA");map.fitBounds(core.getBounds().pad(.3));
   const coreBtn=document.querySelector('[data-map="core"]'),longBtn=document.querySelector('[data-map="long"]');
   function active(b){document.querySelectorAll('.map-chip').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
   coreBtn?.addEventListener('click',()=>{map.fitBounds(core.getBounds().pad(.3));active(coreBtn)});longBtn?.addEventListener('click',()=>{map.fitBounds(long.getBounds().pad(.05));active(longBtn)});
@@ -117,7 +79,7 @@ function initGallery(){
   more?.addEventListener('click',()=>{expanded=!expanded;apply();if(!expanded) grid.scrollIntoView({behavior:'smooth',block:'start'})});
   function show(i){
     if(!visibleItems.length) return; current=(i+visibleItems.length)%visibleItems.length;
-    const img=visibleItems[current].querySelector('img'); lbImg.src=img.src; lbImg.alt=img.alt; lbCap.textContent=img.alt.replace(" by HeavyDuty Towing in Fresno",''); lbCount.textContent=`${current+1} / ${visibleItems.length}`;
+    const img=visibleItems[current].querySelector('img'); lbImg.src=img.src; lbImg.alt=img.alt; lbCap.textContent=img.alt.replace(" by A's Towing in Fresno",''); lbCount.textContent=`${current+1} / ${visibleItems.length}`;
   }
   function open(item){expanded=true;apply();current=visibleItems.indexOf(item);show(current);lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false');document.body.classList.add('lightbox-open')}
   function close(){lightbox.classList.remove('open');lightbox.setAttribute('aria-hidden','true');document.body.classList.remove('lightbox-open')}
