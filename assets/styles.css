@@ -382,3 +382,75 @@ body.cursor-on-yellow #tow-cursor path{fill:#fff!important;stroke:#fff!important
     white-space:nowrap !important;
   }
 }
+
+
+/* =========================================================
+   FINAL HEAVY DUTY TOWING BRAND UPDATE
+   ========================================================= */
+
+/* Exact client-supplied Heavy Duty Towing logo. */
+.brand img{
+  width:126px !important;
+  height:76px !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  border:0 !important;
+}
+.footer-brand img{
+  width:190px !important;
+  height:auto !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+/* Mobile sticky CTA starts hidden and fades/slides in after scrolling. */
+@media(max-width:980px){
+  .mobile-call{
+    display:flex !important;
+    opacity:0 !important;
+    transform:translateY(22px) !important;
+    visibility:hidden !important;
+    pointer-events:none !important;
+    transition:
+      opacity .28s ease,
+      transform .28s ease,
+      background-color .2s ease,
+      color .2s ease,
+      border-color .2s ease !important;
+    background:#d71920 !important;
+    color:#fff !important;
+    border:2px solid #fff !important;
+  }
+  .mobile-call.is-visible{
+    opacity:1 !important;
+    transform:translateY(0) !important;
+    visibility:visible !important;
+    pointer-events:auto !important;
+  }
+  /* When crossing red site sections, invert so the CTA remains obvious. */
+  .mobile-call.is-visible.on-red{
+    background:#fff !important;
+    color:#d71920 !important;
+    border-color:#d71920 !important;
+    box-shadow:0 10px 34px rgba(0,0,0,.28) !important;
+  }
+  .brand img{
+    width:96px !important;
+    height:64px !important;
+  }
+}
+@media(max-width:640px){
+  .brand img{
+    width:86px !important;
+    height:60px !important;
+  }
+  .mobile-call{
+    font-size:.84rem !important;
+    letter-spacing:.045em !important;
+    white-space:nowrap !important;
+  }
+}
