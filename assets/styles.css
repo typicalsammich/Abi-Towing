@@ -454,3 +454,20 @@ body.cursor-on-yellow #tow-cursor path{fill:#fff!important;stroke:#fff!important
     white-space:nowrap !important;
   }
 }
+
+/* Header-only logo update. Footer keeps previous white-background artwork. */
+.brand img{
+  width:132px !important;
+  height:82px !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  border:0 !important;
+}
+@media(max-width:980px){
+  .brand img{width:104px !important;height:68px !important}
+}
+@media(max-width:640px){
+  .brand img{width:92px !important;height:62px !important}
+}

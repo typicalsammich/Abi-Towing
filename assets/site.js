@@ -11,7 +11,7 @@ const SERVICES = [
 function header(){
   const serviceLinks = SERVICES.map(s=>`<a href="${s[1]}">${s[0]}</a>`).join('');
   return `<header class="site-header"><div class="container header-inner">
-    <a class="brand" href="index.html"><img src="assets/images/heavy-duty-towing-logo.png" alt="Heavy Duty Towing Fresno logo"><span class="brand-copy"><strong>Heavy Duty Towing</strong><span>Fresno, California</span></span></a>
+    <a class="brand" href="index.html"><img src="assets/images/heavy-duty-towing-header-logo.png" alt="Heavy Duty Towing Fresno logo"><span class="brand-copy"><strong>Heavy Duty Towing</strong><span>Fresno, California</span></span></a>
     <nav class="nav" id="nav"><a href="index.html">Home</a><div class="nav-dropdown"><button type="button" id="services-toggle">Towing Services ▾</button><div class="dropdown-menu">${serviceLinks}</div></div><a href="gallery.html">Gallery</a><a href="testimonials.html">Testimonials</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav>
     <a class="header-call" href="tel:+15595753951">☎ (559) 575-3951</a><button class="menu-toggle" id="menu-toggle" aria-label="Open menu" aria-controls="nav" aria-expanded="false">☰</button>
   </div></header>`;
