@@ -471,3 +471,17 @@ body.cursor-on-yellow #tow-cursor path{fill:#fff!important;stroke:#fff!important
 @media(max-width:640px){
   .brand img{width:92px !important;height:62px !important}
 }
+
+/* Final logo consistency: same client-supplied artwork in header + footer */
+.footer-brand img{
+  width:210px !important;
+  height:auto !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  border:0 !important;
+}
+@media(max-width:640px){
+  .footer-brand img{width:180px !important}
+}
